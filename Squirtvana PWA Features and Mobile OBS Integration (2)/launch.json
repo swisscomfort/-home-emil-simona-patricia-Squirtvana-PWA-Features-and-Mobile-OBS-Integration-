@@ -1,0 +1,124 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "🐍 Debug Backend (Flask)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/squirtvana-backend/src/main.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/squirtvana-backend",
+      "env": {
+        "FLASK_ENV": "development",
+        "FLASK_DEBUG": "1",
+        "PYTHONPATH": "${workspaceFolder}/squirtvana-backend/src"
+      },
+      "python": "${workspaceFolder}/squirtvana-backend/venv/bin/python",
+      "args": [],
+      "stopOnEntry": false,
+      "justMyCode": false,
+      "preLaunchTask": "🐍 Backend: Install Dependencies"
+    },
+    {
+      "name": "🧪 Debug Python Tests",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["-v", "--tb=short"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/squirtvana-backend",
+      "python": "${workspaceFolder}/squirtvana-backend/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/squirtvana-backend/src"
+      },
+      "justMyCode": false
+    },
+    {
+      "name": "🧪 Debug Current Python File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/squirtvana-backend",
+      "python": "${workspaceFolder}/squirtvana-backend/venv/bin/python",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/squirtvana-backend/src"
+      },
+      "justMyCode": false
+    },
+    {
+      "name": "🔌 Debug API Route",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/squirtvana-backend/src/main.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/squirtvana-backend",
+      "env": {
+        "FLASK_ENV": "development",
+        "FLASK_DEBUG": "1",
+        "PYTHONPATH": "${workspaceFolder}/squirtvana-backend/src"
+      },
+      "python": "${workspaceFolder}/squirtvana-backend/venv/bin/python",
+      "args": [],
+      "stopOnEntry": false,
+      "justMyCode": false,
+      "serverReadyAction": {
+        "pattern": "Running on (https?://\\S+|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+:[0-9]+)",
+        "uriFormat": "%s/api/health",
+        "action": "openExternally"
+      }
+    },
+    {
+      "name": "⚛️ Debug Frontend (Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5174",
+      "webRoot": "${workspaceFolder}/squirtvana-complete-frontend/src",
+      "sourceMaps": true,
+      "preLaunchTask": "⚛️ Frontend: Dev Server",
+      "serverReadyAction": {
+        "pattern": "Local:\\s+(https?://\\S+)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    },
+    {
+      "name": "⚛️ Debug Frontend (Edge)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:5174",
+      "webRoot": "${workspaceFolder}/squirtvana-complete-frontend/src",
+      "sourceMaps": true,
+      "preLaunchTask": "⚛️ Frontend: Dev Server"
+    },
+    {
+      "name": "🌐 Debug Full Stack",
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Full Stack",
+      "skipFiles": ["<node_internals>/**"],
+      "compounds": [
+        {
+          "name": "🚀 Full Stack Debug",
+          "configurations": [
+            "🐍 Debug Backend (Flask)",
+            "⚛️ Debug Frontend (Chrome)"
+          ],
+          "stopAll": true
+        }
+      ]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "🚀 Full Stack Debug",
+      "configurations": [
+        "🐍 Debug Backend (Flask)",
+        "⚛️ Debug Frontend (Chrome)"
+      ],
+      "stopAll": true,
+      "preLaunchTask": "🚀 Start Squirtvana (Full Stack)"
+    }
+  ]
+}
+

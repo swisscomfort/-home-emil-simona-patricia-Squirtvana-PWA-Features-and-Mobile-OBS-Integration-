@@ -1,0 +1,219 @@
+{
+  "folders": [
+    {
+      "name": "🎯 Squirtvana PWA (Root)",
+      "path": "."
+    },
+    {
+      "name": "⚛️ Frontend (React)",
+      "path": "./squirtvana-complete-frontend"
+    },
+    {
+      "name": "🐍 Backend (Flask)",
+      "path": "./squirtvana-backend"
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "./squirtvana-backend/venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length=88"],
+    "eslint.workingDirectories": ["squirtvana-complete-frontend"],
+    "typescript.preferences.includePackageJsonAutoImports": "auto",
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+    },
+    "files.associations": {
+      "*.jsx": "javascriptreact",
+      "*.tsx": "typescriptreact"
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/venv": true,
+      "**/__pycache__": true,
+      "**/dist": true,
+      "**/.git": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/venv": true,
+      "**/__pycache__": true,
+      "**/dist": true
+    },
+    "git.ignoreLimitWarning": true,
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+      "package.json": "package-lock.json, pnpm-lock.yaml, yarn.lock",
+      "vite.config.js": "vite.config.*.js",
+      "tailwind.config.js": "postcss.config.js",
+      "requirements.txt": "requirements-dev.txt, requirements-test.txt"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.flake8",
+      "ms-python.black-formatter",
+      "bradlc.vscode-tailwindcss",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "ms-vscode.vscode-typescript-next",
+      "formulahendry.auto-rename-tag",
+      "christian-kohler.path-intellisense",
+      "ms-vscode.vscode-json",
+      "redhat.vscode-yaml",
+      "ms-vscode-remote.remote-containers",
+      "ms-vscode.live-server",
+      "ritwickdey.liveserver",
+      "ms-python.debugpy",
+      "ms-vscode.vscode-thunder-client",
+      "humao.rest-client",
+      "ms-vscode.vscode-npm-script",
+      "christian-kohler.npm-intellisense"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "🚀 Start Squirtvana (Full Stack)",
+        "type": "shell",
+        "command": "./start-squirtvana.sh",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "⚛️ Frontend: Install Dependencies",
+        "type": "shell",
+        "command": "npm install",
+        "options": {
+          "cwd": "${workspaceFolder}/squirtvana-complete-frontend"
+        },
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "⚛️ Frontend: Dev Server",
+        "type": "shell",
+        "command": "npm run dev",
+        "options": {
+          "cwd": "${workspaceFolder}/squirtvana-complete-frontend"
+        },
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "⚛️ Frontend: Build",
+        "type": "shell",
+        "command": "npm run build",
+        "options": {
+          "cwd": "${workspaceFolder}/squirtvana-complete-frontend"
+        },
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "🐍 Backend: Install Dependencies",
+        "type": "shell",
+        "command": "source venv/bin/activate && pip install -r requirements.txt",
+        "options": {
+          "cwd": "${workspaceFolder}/squirtvana-backend"
+        },
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "🐍 Backend: Start Server",
+        "type": "shell",
+        "command": "source venv/bin/activate && python src/main.py",
+        "options": {
+          "cwd": "${workspaceFolder}/squirtvana-backend"
+        },
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "🔧 System Check",
+        "type": "shell",
+        "command": "./system-check.sh",
+        "group": "test",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        }
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "🐍 Debug Backend (Flask)",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/squirtvana-backend/src/main.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}/squirtvana-backend",
+        "env": {
+          "FLASK_ENV": "development",
+          "FLASK_DEBUG": "1"
+        },
+        "python": "${workspaceFolder}/squirtvana-backend/venv/bin/python"
+      },
+      {
+        "name": "🧪 Debug Python Tests",
+        "type": "python",
+        "request": "launch",
+        "module": "pytest",
+        "args": ["-v"],
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}/squirtvana-backend",
+        "python": "${workspaceFolder}/squirtvana-backend/venv/bin/python"
+      }
+    ]
+  }
+}
+

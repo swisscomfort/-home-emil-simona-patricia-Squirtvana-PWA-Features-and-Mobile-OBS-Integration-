@@ -1,0 +1,20 @@
+{
+  "name": "Squirtvana PWA - Mobile Control Center",
+  "short_name": "Squirtvana",
+  "description": "Mobile streaming control center with AI integration",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["entertainment", "utilities"],
+  "lang": "en"
+}
+

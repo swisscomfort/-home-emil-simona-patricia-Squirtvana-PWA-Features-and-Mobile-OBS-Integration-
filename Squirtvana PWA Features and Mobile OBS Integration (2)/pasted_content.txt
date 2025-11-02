@@ -1,0 +1,66 @@
+Für dein Setup **(OBS fernsteuern + Handy-Kamera unterwegs nutzen + PWA)** werden folgende **Open Source Tools** integriert. Diese bilden ein leistungsfähiges, vollständig kontrollierbares Remote-Streaming-System:
+
+---
+
+## ✅ **Komplette Toolchain (Open Source)**
+
+| Komponente               | Beschreibung                                                           | Lizenz     |
+| ------------------------ | ---------------------------------------------------------------------- | ---------- |
+| **OBS Studio**           | Live-Streaming & Aufzeichnung, modular erweiterbar                     | GPLv2      |
+| **OBS WebSocket**        | API-Zugang zu OBS (z. B. Szenen wechseln, Quellen ändern)              | MIT        |
+| **Cloudflared Tunnel**   | Exposes lokale Dienste sicher ins Internet (Reverse Proxy)             | Apache 2.0 |
+| **DroidCam OBS Plugin**  | Verbindet Handy-Kamera via WLAN mit OBS (Clientseite App ist freemium) | GPLv3      |
+| **Node.js**              | Laufzeit für JavaScript-basierte Steuer-PWA                            | MIT        |
+| **React / Vite**         | UI-Framework für die PWA-Steuerung                                     | MIT        |
+| **Flask (optional)**     | Python-Backend als API-Proxy zwischen PWA und OBS                      | BSD        |
+| **WireGuard (optional)** | VPN-Tunnel als sichere Verbindungsmöglichkeit statt Tunnel-Dienste     | GPLv2      |
+| **NGINX (optional)**     | Reverse Proxy / SSL-Termination für professionellen Produktivbetrieb   | BSD-like   |
+| **Certbot (optional)**   | Automatisiert SSL mit Let's Encrypt                                    | Apache 2.0 |
+| **ffmpeg (optional)**    | Video-Encoding/Streaming oder für Kamera-Verarbeitung                  | LGPLv2.1+  |
+
+---
+
+## 📲 Mobilgeräte-Integration (Open Source Optionen):
+
+| Zweck               | Tool                      | Hinweis                                        |
+| ------------------- | ------------------------- | ---------------------------------------------- |
+| Kamera-Handy zu OBS | **IP Webcam** (Android)   | Sendet MJPEG Stream über HTTP (Open Source)    |
+| Kamera-Handy zu OBS | **DroidCam (OBS Plugin)** | Plugin Open Source, App selbst hat Pro-Version |
+| Kamera zu Browser   | **WebRTC**                | Native mit getUserMedia – kein Plugin nötig    |
+
+---
+
+## 🧩 Du hast die Wahl bei Architektur:
+
+### 🔁 Variante A: **Browser → OBS (direkt per WebSocket über Cloudflared)**
+
+* Geringer Overhead
+* Maximale Geschwindigkeit
+* Kein Backend nötig
+
+### 🧱 Variante B: **Browser → Flask-Backend → OBS**
+
+* Erweiterbar (z. B. Login, Logging, Berechtigungen)
+* Besserer Schutz vor Missbrauch
+
+---
+
+## 🛠 Beispiele für konkrete Open Source Repos:
+
+| Funktion                | Open Source Projekt / Repo                                                         |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| OBS-WebSocket-Client    | [obs-websocket-js](https://github.com/obsproject/obs-websocket-js)                 |
+| PWA-Frontend mit React  | [vite](https://github.com/vitejs/vite), [react](https://github.com/facebook/react) |
+| Tunnel zu localhost     | [cloudflared](https://github.com/cloudflare/cloudflared)                           |
+| Flask-API für OBS       | [obs-py](https://github.com/Elektordi/obs-py) oder eigene Lösung                   |
+| Kamera-Stream via Handy | [IP Webcam](https://play.google.com/store/apps/details?id=com.pas.webcam)          |
+
+---
+
+## 🔒 Alles selbst hostbar – keine Cloud-Abhängigkeit
+
+Dein gesamtes System kann auf deinem Fedora-Laptop + Smartphone laufen – ohne Drittanbieter.
+
+---
+
+Wenn du willst, stelle ich dir **eine vollständige Build-Umgebung (inkl. Dockerfile, NGINX, Cloudflared-Tunnel, PWA, OBS-Plugin-Konfiguration)** zusammen – alles open source. Bereit?
